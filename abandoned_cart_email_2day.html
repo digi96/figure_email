@@ -226,7 +226,7 @@
           height: 78px;
           width: 78px;
         }
-
+        
         .products__item .products__content,
         .products__item .products__quantity {
             vertical-align: middle;
@@ -479,18 +479,17 @@
                                                             <tr class="products__item">
                                                                 <th class="products__image-container">
                                 
-                                                                {{#if (lookup attribute_lines 3)}}
-                                                                  {{!-- split on ": " to avoid breaking "https://"... --}}
-                                                                  {{#with (split (trim (lookup attribute_lines 3)) ": ")}}
+                                                                {{#with (lookup attributes 3)}}
+                                                                {{#if value}}
                                                                     <img
-                                                                      src="{{trim (lookup this 1)}}"
-                                                                      class="products__image"
-                                                                      alt="{{../../name}}"
+                                                                    src="{{value}}"
+                                                                    class="products__image"
+                                                                    alt="{{../name}}"
                                                                     >
-                                                                  {{/with}}
                                                                 {{else}}
-                                                                  <img src="{{thumbnail}}" class="products__image__2" alt="{{name}}">
+                                                                    <img src="{{../thumbnail}}" class="products__image__2" alt="{{../name}}">
                                                                 {{/if}}
+                                                                {{/with}}
                                 
                                                                 </th>
 

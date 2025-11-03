@@ -479,18 +479,17 @@
                                                             <tr class="products__item">
                                                                 <th class="products__image-container">
                                 
-                                                                {{#if (lookup attribute_lines 3)}}
-                                                                    {{!-- split on ": " to avoid breaking "https://"... --}}
-                                                                    {{#with (split (trim (lookup attribute_lines 3)) ": ")}}
-                                                                        <img
-                                                                        src="{{trim (lookup this 1)}}"
-                                                                        class="products__image"
-                                                                        alt="{{../../name}}"
-                                                                        >
-                                                                    {{/with}}
+                                                                {{#with (lookup attributes 3)}}
+                                                                {{#if value}}
+                                                                    <img
+                                                                    src="{{value}}"
+                                                                    class="products__image"
+                                                                    alt="{{../name}}"
+                                                                    >
                                                                 {{else}}
-                                                                    <img src="{{thumbnail}}" class="products__image__2" alt="{{name}}">
+                                                                    <img src="{{../thumbnail}}" class="products__image__2" alt="{{../name}}">
                                                                 {{/if}}
+                                                                {{/with}}
                                 
                                                                 </th>
 
